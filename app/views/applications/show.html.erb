@@ -1,0 +1,18 @@
+<h3> Application Show Page </h3>
+
+<% @application.pets.each do |pet|%>
+<%= link_to pet.name, "/pets/#{pet.id}" %>
+<%end%>
+<p><%= @application.name%><p> 
+<p><%=  @application.street_address%><p>
+<p><%=  @application.city%><p>
+<p><%=  @application.state%><p>
+<p><%= @application.zip_code%><p>
+<p><%= @application.description%><p>
+<p><%= @application.status%><p> 
+
+
+
+
+
+
