@@ -96,10 +96,4 @@ RSpec.describe 'the pets index' do
 
     expect(have_current_path).to eq("/applications/new")
   end
-#   As a visitor
-# When I visit the pet index page
-# Then I see a link to "Start an Application"
-# When I click this link
-# Then I am taken to the new application page where I see a form
-# When I fill in this form with my:
 end
