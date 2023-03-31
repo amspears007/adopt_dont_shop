@@ -9,11 +9,9 @@ RSpec.describe 'Application Show', type: :feature do
   let!(:pet1_application) {PetApplication.create!(application_id: applicant1.id, pet_id: pet1.id)}
   let!(:pet2_application) {PetApplication.create!(application_id: applicant1.id, pet_id: pet2.id)}
   
-
-
   it 'I see applicants name, full address, descripition, name of all pets applying for and status'  do
     visit "/applications/#{applicant1.id}" 
-    save_and_open_page
+
 
     expect(page).to have_content('Jamison Ordway') 
     expect(page).to have_content('123 Cat St') 
