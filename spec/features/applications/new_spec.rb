@@ -24,8 +24,8 @@ RSpec.describe "/applications/new" do
     fill_in("Zip code", with: "#{applicant1.zip_code}")
     fill_in("Description", with: "#{applicant1.description}")
     click_button("Submit")
-    
-    expect(current_path).to eq("/applications/#{applicant1.id}")
+    expected_id = Application.last.id
+    expect(current_path).to eq("/applications/#{expected_id}")
     
     expect(page).to have_content("#{applicant1.name}")
     expect(page).to have_content("#{applicant1.street_address}")
@@ -33,7 +33,7 @@ RSpec.describe "/applications/new" do
     expect(page).to have_content("#{applicant1.state}")
     expect(page).to have_content("#{applicant1.zip_code}")
     expect(page).to have_content("#{applicant1.description}")
-    expect(page).to have_content("In Progress")
+    expect(page).to have_content("#{applicant1.status}")
   end
 end
   # Then I am taken to the new application's show page

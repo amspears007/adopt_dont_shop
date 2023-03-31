@@ -8,7 +8,12 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
+    @new_application = Application.create!(application_params)
+    redirect_to "/applications/#{@new_application.id}"
   end
 
+private
+  def application_params
+    params.permit(:name, :street_address, :city, :state, :zip_code, :description, :status)
+  end
 end
