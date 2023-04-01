@@ -1,4 +1,4 @@
-<h3> Application Show Page </h3>
+<h2> Application Show Page </h2>
 
 <% @application.pets.each do |pet|%>
 <%= link_to pet.name, "/pets/#{pet.id}" %>
@@ -10,9 +10,11 @@
 <p><%= @application.zip_code%><p>
 <p><%= @application.description%><p>
 <p><%= @application.status%><p> 
-
-
-
-
-
+<br>
+<h3><%= "Add a Pet to this Application " %></h3>
+<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+  <%= f.label :search %>
+  <%= f.text_field :search %>
+  <%= f.submit "Submit" %>
+<% end %>
 
