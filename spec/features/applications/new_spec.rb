@@ -35,7 +35,20 @@ RSpec.describe "/applications/new" do
     expect(page).to have_content("#{applicant1.description}")
     expect(page).to have_content("#{applicant1.status}")
   end
+  
+  it 'it will redirect user if an application field is blank and displays error' do
+    visit "/applications/new"
+
+    click_button("Submit")
+
+    expect(current_path).to eq("/applications/new")
+    expect(page).to have_content("Please fix these errors:")
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Street address can't be blank")
+    expect(page).to have_content("City can't be blank")
+    expect(page).to have_content("State can't be blank")
+    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Zip code can't be blank")
+    expect(page).to have_content("Zip code is not a number")
+  end
 end
-  # Then I am taken to the new application's show page
-# And I see my Name, address information, and description of why I would make a good home
-# And I see an indicator that this application is "In Progress"
