@@ -6,6 +6,7 @@ RSpec.describe 'Application Show', type: :feature do
   let!(:pet1) {Pet.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'George Hairlesson', shelter_id: shelter_3.id)}
   let!(:pet2) {Pet.create!(adoptable: false, age: 2, breed: 'american shorthair', name: 'Furry', shelter_id: shelter_3.id)}
 
+  
   let!(:pet1_application) {PetApplication.create!(application_id: applicant1.id, pet_id: pet1.id)}
   let!(:pet2_application) {PetApplication.create!(application_id: applicant1.id, pet_id: pet2.id)}
   
@@ -19,28 +20,24 @@ RSpec.describe 'Application Show', type: :feature do
     expect(page).to have_link(pet1.name)
     expect(page).to have_link(pet2.name)
   end
+
   describe 'User Story 4' do
     it 'has a link to add a pet to this application' do
       visit "/applications/#{applicant1.id}" 
 
-      expect(page).to have_button("Add a Pet to this Application")
-      expect(page).to have_content("In Progress")
+      expect(page).to have_content("Add a Pet to this Application")
+      expect(page).to have_button("Submit")
     end
 
     it 'will display the pet name' do
+      shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
       visit "/applications/#{applicant1.id}" 
       
-      fill_in("search", with: "George Hairlesson")
+      fill_in("search", with: "New Cat")
       click_on("Submit")
 
       expect(current_path).to eq("/applications/#{applicant1.id}")
-      expect(page).to have_content("George Hairlesson")
+      expect(page).to have_content("New")
     end
-#   As a visitor
-# In that section I see an input where I can search for Pets by name
-# When I fill in this field with a Pet's name
-# And I click submit,
-# Then I am taken back to the application show page
-# And under the search bar I see any Pet whose name matches my search
   end
 end

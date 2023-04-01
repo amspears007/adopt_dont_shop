@@ -18,3 +18,8 @@
   <%= f.submit "Submit" %>
 <% end %>
 
+<% if !@pets.nil? %>
+  <% @pets.each do |pet| %>
+    <%= pet.name %>
+  <% end %> 
+<% end %> 
