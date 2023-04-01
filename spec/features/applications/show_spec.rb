@@ -12,12 +12,35 @@ RSpec.describe 'Application Show', type: :feature do
   it 'I see applicants name, full address, descripition, name of all pets applying for and status'  do
     visit "/applications/#{applicant1.id}" 
 
-
     expect(page).to have_content('Jamison Ordway') 
     expect(page).to have_content('123 Cat St') 
     expect(page).to have_content("I love cats so I want to adopt them") 
     expect(page).to have_content('In Progress') 
     expect(page).to have_link(pet1.name)
     expect(page).to have_link(pet2.name)
+  end
+  describe 'User Story 4' do
+    it 'has a link to add a pet to this application' do
+      visit "/applications/#{applicant1.id}" 
+
+      expect(page).to have_button("Add a Pet to this Application")
+      expect(page).to have_content("In Progress")
+    end
+
+    it 'will display the pet name' do
+      visit "/applications/#{applicant1.id}" 
+      
+      fill_in("search", with: "George Hairlesson")
+      click_on("Submit")
+
+      expect(current_path).to eq("/applications/#{applicant1.id}")
+      expect(page).to have_content("George Hairlesson")
+    end
+#   As a visitor
+# In that section I see an input where I can search for Pets by name
+# When I fill in this field with a Pet's name
+# And I click submit,
+# Then I am taken back to the application show page
+# And under the search bar I see any Pet whose name matches my search
   end
 end
