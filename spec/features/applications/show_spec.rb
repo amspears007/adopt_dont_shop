@@ -42,17 +42,17 @@ RSpec.describe 'Application Show', type: :feature do
   end
 
   describe 'User story 5' do
-  shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
     it 'has a button next to the pets name to Adopt this Pet' do
+      shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
       visit "/applications/#{applicant1.id}" 
       # expected_id = Application.last.id
 
       fill_in("search", with: "New Cat")
       click_on("Submit")
 
-      expect(page).to have_button("Adopt this Pet")
+      expect(page).to have_link("Adopt this Pet")
 
-      click_button("Adopt this Pet")
+      click_link("Adopt this Pet")
 
       expect(current_path).to eq("/applications/#{applicant1.id}")
       expect(page).to have_content("New Cat")
