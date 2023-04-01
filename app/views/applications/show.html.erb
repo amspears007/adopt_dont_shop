@@ -20,6 +20,9 @@
 
 <% if !@pets.nil? %>
   <% @pets.each do |pet| %>
-    <%= pet.name %><br>
+    <%= pet.name %>
+    <%= link_to "Adopt this Pet", "/applications/#{@application.id}?search=#{pet.name}", method: :patch %>
   <% end %> 
+
+
 <% end %> 
