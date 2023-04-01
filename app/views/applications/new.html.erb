@@ -24,7 +24,8 @@
 
   <%= f.label :zip_code %>
   <%= f.number_field :zip_code %><br>
-
+  
+  <%= f.hidden_field :description, value: "N/A" %><br>
   <%= f.hidden_field :status, value: "In Progress" %><br>
 
   <%= f.submit "Submit" %>
