@@ -1,17 +1,17 @@
 Visitors to the site will be able to create applications to adopt pets. An application has many pets. Pets can have many applications.
-
 [ ] done
 
-1. Application Show Page
+5. Add a Pet to an Application
 
 As a visitor
-When I visit an applications show page
-Then I can see the following:
-- Name of the Applicant
-- Full Address of the Applicant including street address, city, state, and zip code
-- Description of why the applicant says they'd be a good home for this pet(s)
-- names of all pets that this application is for (all names of pets should be links to their show page)
-- The Application's status, either "In Progress", "Pending", "Accepted", or "Rejected"
+When I visit an application's show page
+And I search for a Pet by name
+And I see the names Pets that match my search
+Then next to each Pet's name I see a button to "Adopt this Pet"
+When I click one of these buttons
+Then I am taken back to the application show page
+And I see the Pet I want to adopt listed on this application
+
 
 # Adopt, don't Shop
 
