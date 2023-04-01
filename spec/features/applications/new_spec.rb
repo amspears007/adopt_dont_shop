@@ -10,7 +10,6 @@ RSpec.describe "/applications/new" do
     expect(page).to have_field("City")
     expect(page).to have_field("State")
     expect(page).to have_field("Zip code")
-    expect(page).to have_field("Description")
     expect(page).to have_button("Submit")
   end
   
@@ -22,7 +21,6 @@ RSpec.describe "/applications/new" do
     fill_in("City", with: "#{applicant1.city}")
     fill_in("State", with: "#{applicant1.state}")
     fill_in("Zip code", with: "#{applicant1.zip_code}")
-    fill_in("Description", with: "#{applicant1.description}")
     click_button("Submit")
     expected_id = Application.last.id
     expect(current_path).to eq("/applications/#{expected_id}")
@@ -32,7 +30,6 @@ RSpec.describe "/applications/new" do
     expect(page).to have_content("#{applicant1.city}")
     expect(page).to have_content("#{applicant1.state}")
     expect(page).to have_content("#{applicant1.zip_code}")
-    expect(page).to have_content("#{applicant1.description}")
     expect(page).to have_content("#{applicant1.status}")
   end
   
@@ -47,7 +44,6 @@ RSpec.describe "/applications/new" do
     expect(page).to have_content("Street address can't be blank")
     expect(page).to have_content("City can't be blank")
     expect(page).to have_content("State can't be blank")
-    expect(page).to have_content("Description can't be blank")
     expect(page).to have_content("Zip code can't be blank")
     expect(page).to have_content("Zip code is not a number")
   end
