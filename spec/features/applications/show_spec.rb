@@ -58,4 +58,25 @@ RSpec.describe 'Application Show', type: :feature do
       expect(page).to have_content("New Cat")
     end
   end
+
+  describe 'User Story 6' do
+    it ' as a visitor will have a section to submit my application as long as a pet is attached' do
+      visit "/applications/#{applicant1.id}"
+
+      expect(page).to have_content("Submit Application")
+      expect(page).to have_button("Submit Application")
+    end
+
+    it 'when the form is filled and submitted the application status changes to pending' do
+      visit "/applications/#{applicant1.id}"
+
+      fill_in("Description", with: "I love cats so I want to adopt them a lot")
+      click_on("Submit Application")
+
+      expect(page).to have_content("Pending")
+      expect(page).to have_no_content("In Progress")
+      expect(page).to have_content("I love cats so I want to adopt them a lot")
+      expect(page).to have_no_content("Add a Pet to this Application")
+    end
+  end
 end
