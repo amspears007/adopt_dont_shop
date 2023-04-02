@@ -12,16 +12,14 @@
 <p><%= @application.status%><p> 
 <br>
 
-<div>
-  <% if @application.status != "Pending" %>
-    <h3><%= "Add a Pet to this Application " %></h3>
-    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
-      <%= f.label :search %>
-      <%= f.text_field :search %>
-      <%= f.submit "Submit" %>
-    <% end %>
+<% if @application.status != "Pending" %>
+  <h3><%= "Add a Pet to this Application " %></h3>
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+    <%= f.label :search %>
+    <%= f.text_field :search %>
+    <%= f.submit "Submit" %>
   <% end %>
-</div>
+<% end %>
 
 <% if @pets.present? %>
   <% @pets.each do |pet| %>
@@ -38,4 +36,3 @@
     <%= f.submit "Submit Application" %>
   <% end %>
 <% end %>
-

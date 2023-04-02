@@ -97,7 +97,7 @@ RSpec.describe 'Application Show', type: :feature do
 
       fill_in("search", with: "Ne")
       click_on("Submit")
-save_and_open_page
+
       expect(page).to have_content("New Cat")
     end
   end
