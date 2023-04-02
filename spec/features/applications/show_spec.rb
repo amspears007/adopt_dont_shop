@@ -101,4 +101,16 @@ RSpec.describe 'Application Show', type: :feature do
       expect(page).to have_content("New Cat")
     end
   end
+
+  describe 'User Story 9' do
+    it 'can search for pet case insensitive' do
+      shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
+      visit "/applications/#{applicant1.id}"
+
+      fill_in("search", with: "NeW cAt")
+      click_on("Submit")
+
+      expect(page).to have_content("New Cat")
+    end
+  end
 end
