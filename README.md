@@ -1,16 +1,10 @@
 Visitors to the site will be able to create applications to adopt pets. An application has many pets. Pets can have many applications.
-[ ] done
-
-5. Add a Pet to an Application
+7. No Pets on an Application
 
 As a visitor
 When I visit an application's show page
-And I search for a Pet by name
-And I see the names Pets that match my search
-Then next to each Pet's name I see a button to "Adopt this Pet"
-When I click one of these buttons
-Then I am taken back to the application show page
-And I see the Pet I want to adopt listed on this application
+And I have not added any pets to the application
+Then I do not see a section to submit my application
 
 
 # Adopt, don't Shop

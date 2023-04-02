@@ -23,7 +23,7 @@
   <% end %>
 <% end %>
 
-<% if !@pets.nil? %>
+<% if @pets.present? %>
   <% @pets.each do |pet| %>
     <%= pet.name %>
     <br>
@@ -31,7 +31,7 @@
   <% end %> 
 <% end %> 
 
-<% if !@application.pets.nil? && @application.status != "Pending" %>
+<% if @application.pets.present? && @application.status != "Pending" %>
   <h3><%= "Submit Application" %></h3>
   <%= form_with url: "/applications/#{@application.id}?status=Pending", method: :patch, local: true do |f| %>
     <%= f.label :description %>
