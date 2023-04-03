@@ -22,7 +22,7 @@ RSpec.describe Shelter, type: :model do
     @pet_3 = @shelter_3.pets.create(name: 'Lucille Bald', breed: 'sphynx', age: 8, adoptable: true)
     @pet_4 = @shelter_1.pets.create(name: 'Ann', breed: 'ragdoll', age: 5, adoptable: true)
 
-    @applicant1 = Application.create!(name: "Jamison Ordway", street_address: '123 Cat St', city: 'Denver', state: 'CO', zip_code: 80238, description:"I love cats so I want to adopt them", status: 'In Progress')
+    @applicant1 = Application.create!(name: "Jamison Ordway", street_address: '123 Cat St', city: 'Denver', state: 'CO', zip_code: 80238, description:"I love cats so I want to adopt them", status: 'Pending')
 
     @pet1_application = PetApplication.create!(application_id: @applicant1.id, pet_id: @pet_1.id)
     @pet2_application = PetApplication.create!(application_id: @applicant1.id, pet_id: @pet_3.id)
