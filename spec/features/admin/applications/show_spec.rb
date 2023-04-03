@@ -19,5 +19,19 @@ RSpec.describe 'Admin Applications Show Page', type: :feature do
       expect(page).to have_button("Approve George Hairlesson's Application")
       expect(page).to have_content('George Hairlesson')
     end
+
+    it "When I click that button
+    Then I'm taken back to the admin application show page
+    And next to the pet that I approved the button is gone and I see a message
+    that the pet has been approved" do
+    visit"/admin/applications/#{applicant1.id}"
+    save_and_open_page
+
+    click_link("Approve George Hairlesson's Application")
+
+    expect(current_path).to eq("/admin/applications/#{applicant1.id}")
+    expect(page).to_not have_button("Approve George Hairlesson's Application")
+    expect(page).to have_content("#{pet1.name} Approved")
+    end
   end
 end

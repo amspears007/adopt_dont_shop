@@ -1,5 +1,5 @@
    
     <% @pets.each do |pet| %>
     <%= pet.name %>
-     <p><%= link_to "<button>Approve #{pet.name}'s Application</button>".html_safe, '/admin/applications/:id' %></p>
+     <p><%= link_to "<button>Approve #{pet.name}'s Application</button>".html_safe, "/admin/applications/#{@application.id}?" %></p>
     <% end %>
