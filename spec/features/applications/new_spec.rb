@@ -39,7 +39,7 @@ RSpec.describe "/applications/new" do
     click_button("Submit")
 
     expect(current_path).to eq("/applications/new")
-    expect(page).to have_content("Please fix these errors:")
+    expect(page).to have_content("Error:")
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Street address can't be blank")
     expect(page).to have_content("City can't be blank")

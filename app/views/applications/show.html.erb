@@ -1,6 +1,5 @@
 <h2> Application Show Page </h2>
 
-
 <% @application.pets.each do |pet|%>
 <%= link_to pet.name, "/pets/#{pet.id}" %>
 <%end%>
@@ -19,15 +18,13 @@
     <%= f.label :search %>
     <%= f.text_field :search %>
     <%= f.submit "Submit" %>
-
   <% end %>
 <% end %>
 
 <% if @pets.present? %>
   <% @pets.each do |pet| %>
     <%= pet.name %>
-    <br>
-    <%= link_to "Adopt this Pet", "/applications/#{@application.id}?search=#{pet.name}", method: :patch %><br>
+    <%= link_to "<button>Adopt this Pet</button>".html_safe, "/applications/#{@application.id}?search=#{pet.name}", method: :patch %><br>
   <% end %> 
 <% end %> 
 
@@ -39,4 +36,3 @@
     <%= f.submit "Submit Application" %>
   <% end %>
 <% end %>
-

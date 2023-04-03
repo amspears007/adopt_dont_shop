@@ -1,4 +1,7 @@
 Visitors to the site will be able to create applications to adopt pets. An application has many pets. Pets can have many applications.
+
+Table Diagram: [https://dbdiagram.io/d/642095e55758ac5f17243e50]
+
 7. No Pets on an Application
 
 As a visitor

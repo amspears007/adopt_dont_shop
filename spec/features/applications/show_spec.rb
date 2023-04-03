@@ -45,7 +45,6 @@ RSpec.describe 'Application Show', type: :feature do
     it 'has a button next to the pets name to Adopt this Pet' do
       shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
       visit "/applications/#{applicant1.id}" 
-      # expected_id = Application.last.id
 
       fill_in("search", with: "New Cat")
       click_on("Submit")
@@ -84,11 +83,34 @@ RSpec.describe 'Application Show', type: :feature do
     it 'does not have a section to submit my application if a pet has not been added' do
       applicant2 = Application.create!(name: "Brian Guthrie", street_address: '123 Dog St', city: 'Springs', state: 'CO', zip_code: 80238, description:"I love dogs so I want to adopt them", status: 'In Progress') 
       visit "/applications/#{applicant2.id}"
-      save_and_open_page
       
       expect(page).to have_content("Add a Pet to this Application")
       expect(page).to_not have_content('Submit Application')
       expect(page).to_not have_content("Furry")
+    end
+  end
+
+  describe 'User Story 8' do
+    it 'can search for partial matches of pet names' do
+      shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
+      visit "/applications/#{applicant1.id}"
+
+      fill_in("search", with: "Ne")
+      click_on("Submit")
+
+      expect(page).to have_content("New Cat")
+    end
+  end
+
+  describe 'User Story 9' do
+    it 'can search for pet case insensitive' do
+      shelter_3.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'New Cat')
+      visit "/applications/#{applicant1.id}"
+
+      fill_in("search", with: "NeW cAt")
+      click_on("Submit")
+
+      expect(page).to have_content("New Cat")
     end
   end
 end
