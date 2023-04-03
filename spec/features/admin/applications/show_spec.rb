@@ -14,6 +14,7 @@ RSpec.describe 'Admin Applications Show Page', type: :feature do
   describe "User Story 12 When I visit an admin application show page ('/admin/applications/:id')" do
     it 'I see a button or every pet that the application is for that specific pet' do
       visit"/admin/applications/#{applicant1.id}"
+      save_and_open_page
 
       expect(page).to have_button('Approve Application')
       expect(page).to have_content('George Hairlesson')
