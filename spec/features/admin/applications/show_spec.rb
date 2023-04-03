@@ -16,7 +16,7 @@ RSpec.describe 'Admin Applications Show Page', type: :feature do
       visit"/admin/applications/#{applicant1.id}"
       save_and_open_page
 
-      expect(page).to have_button('Approve Application')
+      expect(page).to have_button("Approve George Hairlesson's Application")
       expect(page).to have_content('George Hairlesson')
     end
   end
