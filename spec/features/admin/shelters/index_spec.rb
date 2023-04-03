@@ -11,14 +11,22 @@ RSpec.describe 'Admin Shelters Index Page', type: :feature do
   describe 'User Story 10' do
     it 'displays all shelters in the system in reverse alphabetical order by name' do
       visit "/admin/shelters"
-      save_and_open_page
 
       expect("RGV animal shelter").to appear_before("Fancy pets of Colorado")
       expect("Fancy pets of Colorado").to appear_before("Aurora shelter")
     end
   end
-#   Admin Shelters Index
-# As a visitor
+
+  describe 'User Story 11' do
+    it 'has a section for name of shelters with pending applications' do
+      visit "/admin/shelters"
+
+      expect(page).to have_content("Shelters with Pending Applications")
+      expect("Fancy pets of Colorado").to appear_after("Shelters with Pending Applications")
+    end
+#     As a visitor
 # When I visit the admin shelter index ('/admin/shelters')
-# Then I see all Shelters in the system listed in reverse alphabetical order by name
+# Then I see a section for "Shelter's with Pending Applications"
+# And in this section I see the name of every shelter that has a pending application
+  end
 end
