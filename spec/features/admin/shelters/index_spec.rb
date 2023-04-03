@@ -11,6 +11,7 @@ RSpec.describe 'Admin Shelters Index Page', type: :feature do
   describe 'User Story 10' do
     it 'displays all shelters in the system in reverse alphabetical order by name' do
       visit "/admin/shelters"
+      save_and_open_page
 
       expect("RGV animal shelter").to appear_before("Fancy pets of Colorado")
       expect("Fancy pets of Colorado").to appear_before("Aurora shelter")
