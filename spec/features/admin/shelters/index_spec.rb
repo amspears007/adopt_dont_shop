@@ -27,9 +27,5 @@ RSpec.describe 'Admin Shelters Index Page', type: :feature do
       expect(page).to have_content("Shelters with Pending Applications")
       expect(page).to have_content("Fancy pets of Colorado")
     end
-#     As a visitor
-# When I visit the admin shelter index ('/admin/shelters')
-# Then I see a section for "Shelter's with Pending Applications"
-# And in this section I see the name of every shelter that has a pending application
   end
 end

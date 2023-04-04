@@ -12,27 +12,41 @@ RSpec.describe 'Admin Applications Show Page', type: :feature do
 
 
   describe "User Story 12 When I visit an admin application show page ('/admin/applications/:id')" do
-    it 'I see a button or every pet that the application is for that specific pet' do
+    it 'I see an approve button for every pet that the application is for that specific pet' do
       visit"/admin/applications/#{applicant1.id}"
-      save_and_open_page
 
       expect(page).to have_button("Approve George Hairlesson's Application")
       expect(page).to have_content('George Hairlesson')
     end
 
-    it "When I click that button
-    Then I'm taken back to the admin application show page
-    And next to the pet that I approved the button is gone and I see a message
-    that the pet has been approved" do
-    visit"/admin/applications/#{applicant1.id}"
-    save_and_open_page  
-   
+    it "When I click that button then im taken back to the admin application show page and next to the pet that I approved the button is gone and I see a message that the pet has been approved" do
+    visit"/admin/applications/#{applicant1.id}"  
 
     click_link("Approve George Hairlesson's Application")
 
     expect(current_path).to eq("/admin/applications/#{applicant1.id}")
     expect(page).to_not have_button("Approve George Hairlesson's Application")
     expect(page).to have_content("#{pet1.name} Approved")
+    end
+  end
+
+  describe "User Story 13 When I visit an admin application show page ('/admin/applications/:id')" do
+    it 'I see a reject button for every pet that the application is for that specific pet' do
+      visit"/admin/applications/#{applicant1.id}"
+
+      expect(page).to have_button("Reject George Hairlesson's Application")
+      expect(page).to have_content('George Hairlesson')
+    end
+
+    it "When I click that button then im taken back to the admin application show page and next to the pet that I rejected the button is gone and I see a message that the pet has been rejected" do
+    visit"/admin/applications/#{applicant1.id}"  
+
+    click_link("Reject George Hairlesson's Application")
+
+    expect(current_path).to eq("/admin/applications/#{applicant1.id}")
+    expect(page).to_not have_button("Approve George Hairlesson's Application")
+    expect(page).to have_content("#{pet1.name} Rejected")
+    save_and_open_page
     end
   end
 end
