@@ -25,7 +25,8 @@ RSpec.describe 'Admin Applications Show Page', type: :feature do
     And next to the pet that I approved the button is gone and I see a message
     that the pet has been approved" do
     visit"/admin/applications/#{applicant1.id}"
-    save_and_open_page
+    save_and_open_page  
+   
 
     click_link("Approve George Hairlesson's Application")
 
