@@ -1,9 +1,10 @@
 class AdminApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
-    @pets = @application.pets.includes(:pet_applications)
-    @pending_pets = @application.pets.includes(:pet_applications)
-    @pending_pets = @application.pets.includes(:pet_applications)
+    @pending_pets = @application.pets.includes(:pet_applications).where(pet_applications: {status: "Pending"})
+    @approved_pets = @application.pets.includes(:pet_applications).where(pet_applications: {status: "Approved"})
+    @rejected_pets = @application.pets.includes(:pet_applications).where(pet_applications: {status: "Rejected"})
+
 
   end
 
