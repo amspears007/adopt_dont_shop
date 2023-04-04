@@ -1,7 +1,7 @@
    
     <% @pets.each do |pet| %>
+      <% if pet.pet_applications.find_by(application_id: @application.id).status == "Pending" %> 
     <%= pet.name %>
-      <% if pet.adoption_status == "Pending" %> 
       <p><%= link_to "<button>Approve #{pet.name}'s Application</button>".html_safe, "/admin/applications/#{@application.id}?pet_id=#{pet.id};adoption_status=Approved", method: :patch, local: true  %></p>
       <p><%= link_to "<button>Reject #{pet.name}'s Application</button>".html_safe, "/admin/applications/#{@application.id}?pet_id=#{pet.id};adoption_status=Rejected", method: :patch, local: true  %></p>
       <% elsif pet.adoption_status == "Approved" %>
