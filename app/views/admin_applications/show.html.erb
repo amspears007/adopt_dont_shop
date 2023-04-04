@@ -1,5 +1,13 @@
    
     <% @pets.each do |pet| %>
     <%= pet.name %>
-     <p><%= link_to "<button>Approve #{pet.name}'s Application</button>".html_safe, "/admin/applications/#{@application.id}?" %></p>
+    <% if pet.adoption_status == "Pending" %> 
+     <p><%= link_to "<button>Approve #{pet.name}'s Application</button>".html_safe, "/admin/applications/#{@application.id}?pet_id=#{pet.id};adoption_status=Approved", method: :patch, local: true  %></p>
+     <% elsif pet.adoption_status == "Approved" %>
+     <p><%= "#{pet.name}" %> Approved!</p>
+     <% else %>
+      <% pet.adoption_status != "Approved" %>
+      <p> <%= "#{pet.name}" %> Denied. </p>
+      
+     <% end %> 
     <% end %>
