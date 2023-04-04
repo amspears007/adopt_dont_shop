@@ -2,6 +2,9 @@ class AdminApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
     @pets = @application.pets.includes(:pet_applications)
+    @pending_pets = @application.pets.includes(:pet_applications)
+    @pending_pets = @application.pets.includes(:pet_applications)
+
   end
 
   def update
