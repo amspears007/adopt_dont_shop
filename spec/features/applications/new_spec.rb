@@ -15,6 +15,7 @@ RSpec.describe "/applications/new" do
   
   it 'can create a new application and returns to the show page' do
     visit "/applications/new"
+    within("div#new-application") do
     
     fill_in("Name", with: "#{applicant1.name}")
     fill_in("Street address", with: "#{applicant1.street_address}")
@@ -22,6 +23,7 @@ RSpec.describe "/applications/new" do
     fill_in("State", with: "#{applicant1.state}")
     fill_in("Zip code", with: "#{applicant1.zip_code}")
     click_button("Submit")
+    end
     expected_id = Application.last.id
     expect(current_path).to eq("/applications/#{expected_id}")
     
