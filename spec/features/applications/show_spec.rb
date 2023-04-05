@@ -83,6 +83,7 @@ RSpec.describe 'Application Show', type: :feature do
     it 'does not have a section to submit my application if a pet has not been added' do
       applicant2 = Application.create!(name: "Brian Guthrie", street_address: '123 Dog St', city: 'Springs', state: 'CO', zip_code: 80238, description:"I love dogs so I want to adopt them", status: 'In Progress') 
       visit "/applications/#{applicant2.id}"
+      save_and_open_page
       
       expect(page).to have_content("Add a Pet to this Application")
       expect(page).to_not have_content('Submit Application')
